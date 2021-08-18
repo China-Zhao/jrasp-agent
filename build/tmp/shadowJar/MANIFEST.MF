@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: jrasp-agent
+Premain-Class: com.jrasp.agent.RaspAgent
+Implementation-Version: 1.0
+Agent-Class: com.jrasp.agent.RaspAgent
+Specification-Title: jrasp-agent
+Can-Retransform-Classes: true
+Boot-Class-Path: jrasp-agent-all.jar
+Specification-Version: 1.0
+

@@ -1,0 +1,33 @@
+id: 0
+name: com/Main
+methods:
+  - id: 0
+    methodName: onMessage
+    methodDesc: (Ljava/lang/String;)V
+    keys:
+      - index: 0
+        endsWith:
+          - README.txt
+          - README1.txt
+          - README2.txt
+          - README3.txt
+---
+id: 0
+name: java/lang/ProcessImpl
+methods:
+  - id: 0
+    methodName: start
+    methodDesc: ([Ljava/lang/String;Ljava/util/Map;Ljava/lang/String;[Ljava/lang/ProcessBuilder$Redirect;Z)Ljava/lang/Process;
+    keys:
+      - index: 2
+        endsWith:
+          - README1.txt
+          - README2.txt
+          - README3.txt
+          - README4.txt
+          - README5.txt
+          - README6.txt
+          - README7.txt
+          - README8.txt
+          - README9.txt
+          - README10.txt

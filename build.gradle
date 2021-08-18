@@ -1,0 +1,49 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version '6.0.0'
+    id 'java'
+}
+
+group 'com.jrasp'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.ow2.asm', name: 'asm', version: '9.0'
+    compile group: 'org.ow2.asm', name: 'asm-util', version: '9.0'
+    compile group: 'org.ow2.asm', name: 'asm-commons', version: '9.0'
+    compile group: 'org.yaml', name: 'snakeyaml', version: '1.29'
+    compile group: 'io.netty', name: 'netty-all', version: '4.1.51.Final'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.11.2'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.11'
+    compile group: 'commons-io', name: 'commons-io', version: '2.11.0'
+}
+
+jar {
+    manifest {
+        attributes 'Agent-Class': 'com.jrasp.agent.RaspAgent'
+        attributes 'Premain-Class': 'com.jrasp.agent.RaspAgent'
+        attributes 'Can-Retransform-Classes': 'true'
+        attributes 'Boot-Class-Path': 'jrasp-agent-all.jar'
+        attributes 'Specification-Title': 'jrasp-agent'
+        attributes 'Specification-Version': '1.0'
+        attributes 'Implementation-Title': 'jrasp-agent'
+        attributes 'Implementation-Version': "1.0"
+    }
+}
+
+shadowJar {
+    relocate 'io.netty', 'rasp.io.netty'
+    relocate 'com.fasterxml.jackson', 'rasp.com.fasterxml.jackson'
+    relocate 'META-INF/native/libnetty', 'META-INF/native/librasp_netty'
+    relocate 'org.apache.commons.lang3', 'rasp.org.apache.commons.lang3'
+    relocate 'org.apache.commons.io', 'rasp.org.apache.commons.io'
+    relocate 'org.objectweb.asm', 'rasp.org.objectweb.asm'
+    relocate 'org.yaml.snakeyaml', 'rasp.org.yaml.snakeyaml'
+}
+
+test {
+    useJUnitPlatform()
+}
